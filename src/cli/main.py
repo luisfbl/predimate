@@ -41,7 +41,7 @@ def get_input_list(prompt, repeat=True):
     prepositions, expressions = [], []
 
     while True:
-        item = input(prompt)
+        item = input(prompt).replace(" ", "")
 
         if item == "0":
             break

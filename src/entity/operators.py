@@ -17,19 +17,19 @@ class Operator(Base):
 
 
 class Conjunction(Operator):
-    symbol = '^'
+    symbol = '∧'
 
 
 class Disjunction(Operator):
-    symbol = 'v'
+    symbol = '∨'
 
 
 class Conditional(Operator):
-    symbol = '->'
+    symbol = '→'
 
 
 class BiConditional(Operator):
-    symbol = '<->'
+    symbol = '↔'
 
 
 class Negation(Base):
@@ -40,7 +40,7 @@ class Negation(Base):
         expr_str = f'({self.expr})' if isinstance(self.expr, Operator) or isinstance(self.expr, Negation) \
             else str(self.expr)
 
-        return f'~{expr_str}'
+        return f'¬{expr_str}'
 
 
 class Preposition(Base):
@@ -53,8 +53,13 @@ class Preposition(Base):
 
 operators = {
     '^': Conjunction,
+    '∧': Conjunction,
     'v': Disjunction,
+    '∨': Disjunction,
     '->': Conditional,
+    '→': Conditional,
     '<->': BiConditional,
+    '↔': BiConditional,
+    '¬': Negation,
     '~': Negation
 }

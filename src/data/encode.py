@@ -26,7 +26,7 @@ def encode_expression(expr: str) -> Base:
 
             # The behavior of negation is different from the other operators
             # While operators have a left and right side to the expression, negation has only one parameter
-            if operator != '~':
+            if operator not in get_operators(Negation):
                 right = encode_expression(expr[i:])
                 left = result.pop()
 
@@ -58,7 +58,7 @@ def encode_expression(expr: str) -> Base:
                 j = find_parentheses_end(expr[i:]) + i
                 sub_result = encode_expression(expr[i:j])
                 i = j
-            elif expr[i] == '~':
+            elif expr[i] in get_operators(Negation):
                 i += 1
                 j = find_end(expr[i:]) + i + 1
                 sub_result = Negation(Predicate(expr[i], [*expr[i + 1:j]]))
@@ -122,9 +122,19 @@ def find_quantifier(expr: str) -> str | None:
 
 def find_end(expr):
     for i in range(len(expr)):
-        if not expr[i].isalpha() or expr[i] == 'v':
+        if not expr[i].isalpha() or expr[i] == 'v' or expr[i] == '∨':
             return i - 1
         elif i == len(expr) - 1:
             return i
 
     return None
+
+
+def get_operators(op):
+    result = []
+
+    for key, value in operators.items():
+        if value == op:
+            result.append(key)
+
+    return result
