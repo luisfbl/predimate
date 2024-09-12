@@ -1,15 +1,13 @@
-from texttable import Texttable
-
 from src.data.encode import encode_expression
 from src.cli.truth_table import generate_truth_table
 
 
 def print_main_header():
-    header = """
+    header = r"""
       _____              _ _                 _       
      |  __ \            | (_)               | |      
      | |__) | __ ___  __| |_ _ __ ___   __ _| |_ ___ 
-     |  ___/ '__/ _ \/ _` | | '_ ` _ \ / _` | __/ _ \\
+     |  ___/ '__/ _ \/ _` | | '_ ` _ \ / _` | __/ _ \
      | |   | | |  __/ (_| | | | | | | | (_| | ||  __/
      |_|   |_|  \___|\__,_|_|_| |_| |_|\__,_|\__\___|
     """
@@ -35,7 +33,7 @@ def parse_input(item, prepositions, expressions):
         expressions.append(wrapped)
 
     for prep in list(filter(lambda char: char.isalpha() and char != 'v', item)):
-        if prep not in prepositions:
+        if prep.upper() not in prepositions:
             prepositions.append(prep.upper())
 
 

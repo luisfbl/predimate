@@ -45,7 +45,7 @@ def encode_expression(expr: str) -> Base:
                     i = j
                 else:
                     j = find_end(expr[i:]) + i + 1
-                    sub_result = encode_expression(expr[i:])
+                    sub_result = encode_expression(expr[i:j])
                     i = j
 
                 result.append(Negation(sub_result))

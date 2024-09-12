@@ -1,4 +1,2 @@
 pyinstaller
 texttable
-igraph
-plotly
