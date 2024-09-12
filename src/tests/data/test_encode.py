@@ -148,7 +148,7 @@ class TestEncode(unittest.TestCase):
         )
 
         self.assertEqual(
-            Conditional(left=Negation(expr=Conditional(left=Predicate(predicate='L', letters=['b', 'b']), right=Universal(var='x', expr=Negation(expr=Predicate(predicate='L', letters=['b', 'x']))))), right=Universal(var='x', expr=Negation(expr=Predicate(predicate='L', letters=['b', 'x'])))),
+            Conditional(left=Negation(expr=Predicate(predicate='L', letters=['b', 'b'])), right=Universal(var='x', expr=Negation(expr=Predicate(predicate='L', letters=['b', 'x'])))),
             encode_expression("~Lbb->∀x~Lbx")
         )
 
